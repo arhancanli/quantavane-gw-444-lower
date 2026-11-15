@@ -98,9 +98,11 @@ Gallai–van der Waerden numbers were introduced by Mao, Ozeki, Robertson and Wa
 arithmetic analogue of Gallai–Ramsey numbers. The diagonal value `GW(4; 4, 4)` is the first open
 value of the diagonal. Quantavane's paper reduces it to a single instance (`GW(4; 4, 4) = 329` if and
 only if `[1, 329]` has no good exact 4-colouring), which is not decided; the lower bound 329
-formalized here is the best known. The natural readers are researchers in Ramsey theory on the
-integers and arithmetic combinatorics: van der Waerden numbers, rainbow (anti-van der Waerden)
-problems and Gallai–Ramsey colourings.
+formalized here is the best known. The canonical number `H(4)` is the diagonal canonical van der
+Waerden number of Erdős and Graham, whose growth is Problem #190 of the Erdős problems database;
+`H(4) ≥ 329` improves the standard bound `H(4) ≥ w(3; 4) = 293` that three colours give. The natural
+readers are researchers in Ramsey theory on the integers and arithmetic combinatorics: van der
+Waerden numbers, rainbow (anti-van der Waerden) problems and Gallai–Ramsey colourings.
 
 ## Provenance, literature and novelty
 
