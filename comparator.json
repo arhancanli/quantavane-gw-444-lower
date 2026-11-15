@@ -1,0 +1,13 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Gw444.exists_good",
+    "Gw444.lt_of_gwProperty",
+    "Gw444.lt_GW",
+    "Gw444.exists_canonical"
+  ],
+  "definition_names": [],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true
+}

@@ -1,0 +1,185 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Lower bounds for the diagonal Gallai–van der Waerden numbers: GW(r; 4, 4) ≥ 329 for r = 4, 5, 6"
+  description: >-
+    A Lean 4 and Mathlib proof that, for r = 4, 5, 6, the interval {1, …, 328} has an exact
+    r-colouring (all r colours used) with no rainbow 4-term and no monochromatic 4-term arithmetic
+    progression. Hence the Gallai–van der Waerden numbers GW(r; 4, 4) of Mao, Ozeki, Robertson and
+    Wang (the least M such that for every n ≥ M every exact r-colouring of {1, …, n} contains a
+    rainbow k-term or a monochromatic l-term progression, here k = l = 4) are at least 329 for
+    r = 4, 5, 6 (for every threshold with the defining property, and for the number itself given that
+    a threshold exists), and the canonical number H(4) is at least 329 (a colouring of {1, …, 328}
+    with neither pattern). The colourings are explicit: cubic residue classes modulo the prime 109,
+    with the four points 1, 110, 219, 328 coloured apart. Lean's kernel checks each of them by
+    decide +kernel (no native_decide) through a Boolean test proved sound in Lean. The previous
+    published lower bound for GW(4; 4, 4) was 186 (Y. Si).
+  authors:
+    - "Arhan Canli"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Arhan Canli"
+
+classification:
+  arxiv: ["math.CO", "math.NT"]
+  msc2020: ["05D10", "11B25"]
+
+sources:
+  - title: >-
+      GW(4;4,4) ≥ 329 from cubic residues modulo 109 (Quantavane, November 2026): the results page of
+      quantavane.com and the public data repository of the paper "Power-residue colourings and exact
+      Gallai–van der Waerden numbers"
+    authors:
+      - "Arhan Canli"
+    id: "https://github.com/arhancanli/quantavane-gw-data"
+    type: web post
+    location: >-
+      https://quantavane.com/results/ ("GW(4;4,4) ≥ 329 from cubic residues modulo 109"); the data
+      repository arhancanli/quantavane-gw-data, file gw/colouring_1_328.txt (the 4-colouring), public
+      since 15 November 2026; the paper (A. Canli, November 2026, not yet published), Theorem 1.5(a),
+      Proposition 3.5 and Theorem 3.3
+    relationship: formalizes
+    contributors:
+      - name: "Claude (Anthropic)"
+        role: >-
+          AI agents working under Arhan Canli's direction: found the constructions and the
+          colourings, checked them with separately written programs, and wrote the Lean
+          formalization
+    note: >-
+      The bound was presented by Quantavane before this repository existed (the results page and the
+      data repository), and this repository formalizes it: Lean checks the three colourings of the
+      paper's proof of Theorem 1.5(a). The 4-colouring is the one in gw/colouring_1_328.txt up to the
+      names of the colours (scripts/make_colourings.py checks this). Before the formalization the
+      colourings were checked by two separately written programs that count rainbow and
+      monochromatic progressions. Only the bound is formalized, not the rest of the paper.
+    author_endorsement: participated
+  - title: "Arithmetic progressions, quasi progressions, and Gallai-Ramsey colorings"
+    authors:
+      - "Yaping Mao"
+      - "Kenta Ozeki"
+      - "Aaron Robertson"
+      - "Zhao Wang"
+    id: "doi:10.1016/j.jcta.2022.105672"
+    type: paper
+    location: "J. Combin. Theory Ser. A 193 (2023), 105672; Definition 1.15 (Gallai–van der Waerden numbers)"
+    relationship: background
+    note: >-
+      Introduces the Gallai–van der Waerden numbers GW(r; k, l). The definitions
+      IsGoodExactColouring, GWProperty and GW in Challenge.lean follow Definition 1.15.
+    author_endorsement: not-contacted
+  - title: "Complete Determination of the Gallai-van der Waerden Number GW(r;3,3)"
+    authors:
+      - "Yuan Si"
+    id: "arXiv:2610.30711"
+    type: paper
+    location: "https://arxiv.org/abs/2610.30711 (October 2026)"
+    relationship: background
+    note: >-
+      Gives a colouring of {1, …, 185} that shows GW(4; 4, 4) ≥ 186, the previous lower bound. Y. Si
+      has not reviewed this repository.
+    author_endorsement: not-contacted
+  - title: "Some progression-free partitions constructed using Folkman's method"
+    authors:
+      - "John R. Rabung"
+    id: "doi:10.4153/CMB-1979-012-1"
+    type: paper
+    location: "Canad. Math. Bull. 22 (1979), 87–91"
+    relationship: background
+    note: >-
+      Power-residue colourings as lower-bound constructions for van der Waerden numbers; the residue
+      part of the colourings here (the cubic class of X − 1 modulo 109) is this classical idea.
+    author_endorsement: not-contacted
+
+related_formalizations:
+  - id: "https://palomar-registry.org/entry.html?id=PALOMAR-2026-11-12-000009"
+    relationship: other
+    note: >-
+      Quantavane's formalization of the m-th power residue theorems (arhancanli/quantavane-gw-residue-power).
+      Its instances give GW(4; 4, 4) > 327 and GW(6; 4, 4) > 328; the definitions there are the ones
+      used here (namespace GwPower renamed Gw444). The 5- and 6-colourings here are instances of its
+      Theorem 8 (m = 3, p = 109); the 4-colouring, which gives 328, is not covered by it. Neither
+      repository imports the other.
+
+status:
+  scope: >-
+    Formalized: three explicit exact colourings of {1, …, 328} with 4, 5 and 6 colours and no rainbow
+    and no monochromatic 4-term progression; the bounds 328 < M for every M with the defining property
+    of GW(r; 4, 4), r = 4, 5, 6; 328 < GW(r; 4, 4) given that some threshold exists; and a colouring
+    of {1, …, 328} by natural numbers with neither pattern (H(4) ≥ 329, stated directly). Not
+    formalized: the Gallai–van der Waerden theorem (that a threshold exists), which lt_GW takes as the
+    hypothesis hex; the general residue constructions behind the colourings (the colourings are
+    checked directly); any upper bound for GW(r; 4, 4); the paper's reduction of GW(4; 4, 4) = 329 to
+    one instance.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: agent
+      models: ["claude-opus-5-5"]
+      framework: "Claude Code"
+      tool_setup: >-
+        AI agents in Claude Code with shell access to a local Lean toolchain, Mathlib, C and Python,
+        working under Arhan Canli's direction: agents found the residue constructions and the
+        colourings (11–12 November 2026); another agent wrote this formalization and ran its checks
+        (15 November 2026).
+      cost:
+        wall_time: "part of a day for the constructions; about two hours for the Lean proof"
+        spend_usd: "subscription-based usage, not tracked per project"
+        hardware: "a local Mac (Apple silicon)"
+      prompting_notes: >-
+        The agents were asked for new mathematics on Gallai–van der Waerden numbers, then for a Lean
+        proof of the lower bounds with only the standard axioms (no native_decide), packaged for
+        Palomar like Quantavane's earlier Gallai–van der Waerden repositories.
+  spend_usd: "subscription-based usage, not tracked per project"
+  notes: >-
+    The constructions, the programs and every line of Lean in this repository were written by AI
+    agents (Claude, by Anthropic). Arhan Canli directed the work and is responsible for the result.
+
+fidelity:
+  divergences: >-
+    None known with respect to MORW Definition 1.15 and the paper's statement. Lean conventions to
+    note: colourings are functions on ℕ whose values outside {1, …, n} are ignored; GW uses sInf, which
+    is 0 for the empty set, so lt_GW assumes that some threshold exists, while lt_of_gwProperty does
+    not; H(4) is not defined, and exists_canonical states its lower bound as the existence of a
+    colouring by natural numbers.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Quantavane's agents (Claude, Anthropic)"
+  notes: >-
+    The colourings were checked by two separately written programs before the Lean work, and the
+    generator checks them again by brute force. In Lean: the axioms of the compared theorems were
+    printed; the declarations the compared statements depend on were compared between the Challenge
+    and Solution environments; the exported Solution was replayed through the kernels bundled with the
+    toolchain; red controls (one point recoloured, the 4-colouring on {1, …, 329}, the 4-colouring
+    tested for rainbow 3-term progressions, the 5-colouring read with 4 colours) are rejected by the
+    kernel. No mathematician outside Quantavane has reviewed the proof.
+
+alignment:
+  namespace: "Gw444"
+  statements:
+    - source: "Theorem 1.5(a): good exact r-colourings of [1, 328] for r = 4, 5, 6"
+      lean: "Gw444.exists_good"
+      module: "Challenge"
+      status: proved
+    - source: "Theorem 1.5(a): GW(r; 4, 4) ≥ 329 for r = 4, 5, 6, threshold form"
+      lean: "Gw444.lt_of_gwProperty"
+      module: "Challenge"
+      status: proved
+    - source: "Theorem 1.5(a): GW(r; 4, 4) ≥ 329 for r = 4, 5, 6"
+      lean: "Gw444.lt_GW"
+      module: "Challenge"
+      status: proved
+      note: "Assumes that some threshold exists (the Gallai–van der Waerden theorem, not formalized)."
+    - source: "Theorem 1.5(a): H(4) ≥ 329"
+      lean: "Gw444.exists_canonical"
+      module: "Challenge"
+      status: proved
+
+acknowledgements: >-
+  Mathlib and the Lean toolchain (Lean FRO), including the Comparator and the bundled kernel checkers;
+  Palomar's template and documentation.
