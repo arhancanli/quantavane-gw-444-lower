@@ -150,6 +150,22 @@ python3 scripts/make_colourings.py Gw444/Colourings.lean   # regenerates the col
 - `Gw444/Colourings.lean`: the three colourings and their kernel checks (generated).
 - `comparator.json`, `formalization.yaml`, `scripts/CheckAxioms.lean`, `scripts/make_colourings.py`.
 
+## How to cite
+
+If you use this work, please cite it as below.
+
+```bibtex
+@misc{quantavane-gw-444-lower,
+  author       = {Canli, Arhan},
+  title        = {GW(r;4,4) $>$ 328 for r = 4, 5, 6: Lean 4 proof},
+  year         = {2026},
+  howpublished = {\url{https://github.com/arhancanli/quantavane-gw-444-lower}},
+  note         = {Quantavane; Apache License 2.0}
+}
+```
+
+[CITATION.cff](CITATION.cff) gives the same reference for GitHub's "Cite this repository" button.
+
 ## Licence
 
 Apache-2.0 (`LICENSE`).
